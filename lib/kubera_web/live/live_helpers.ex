@@ -40,7 +40,7 @@ defmodule KuberaWeb.LiveHelpers do
           patch={@return_to}
           id="close"
           class="phx-modal-close"
-          phx_click={hide_modal()} />
+          phx_click={hide_modal()}>✖</.link>
         <% else %>
           <a id="close" href="#" class="phx-modal-close" phx-click={hide_modal()}>✖</a>
         <% end %>
