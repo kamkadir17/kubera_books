@@ -1,5 +1,7 @@
 <h1>Listing Pages</h1>
 
+
+
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.page_index_path(@socket, :index)}>
     <.live_component
@@ -38,4 +40,4 @@
   </tbody>
 </table>
 
-<span><%= live_patch "New Page", to: Routes.page_index_path(@socket, :new) %></span>
+<span><%= live_patch "New Newer Page", to: Routes.page_index_path(@socket, :new) %></span>

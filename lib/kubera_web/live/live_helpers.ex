@@ -35,6 +35,9 @@ defmodule KuberaWeb.LiveHelpers do
         phx-window-keydown={JS.dispatch("click", to: "#close")}
         phx-key="escape"
       >
+
+        <p> This is a live helpers.ex content </p>
+
         <%= if @return_to do %>
           <.link
           patch={@return_to}

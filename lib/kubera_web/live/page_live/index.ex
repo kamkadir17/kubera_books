@@ -16,7 +16,7 @@ defmodule KuberaWeb.PageLive.Index do
 
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
-    |> assign(:page_title, "Edit Page")
+    |> assign(:page_title, "Editing!!! from Dashboard Page")
     |> assign(:page, CMS.get_page!(id))
   end
 
@@ -28,8 +28,8 @@ defmodule KuberaWeb.PageLive.Index do
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Pages")
-    |> assign(:page, nil)
+     |> assign(:page_title, "Listing all contents of Pages")
+    # |> assign(:page, nil)
   end
 
   @impl true

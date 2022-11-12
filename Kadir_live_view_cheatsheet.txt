@@ -1,0 +1,74 @@
+mix phx.gen.live CMS Page pages title body:text
+schema
+migration file 
+user interface for crud operation 
+cms - context
+page - schema 
+pages - plural form for table creation
+title / body = fields in the table
+default is string - for title. body is text datatype.
+
+lib/kubera_web/live/page_live/show.ex
+lib/kubera_web/live/page_live/show.html.heex
+
+lib/kubera_web/live/page_live/index.ex
+lib/kubera_web/live/page_live/index.html.heex
+
+lib/kubera_web/live/page_live/form_component.ex
+lib/kubera_web/live/page_live/form_component.html.heex
+
+lib/kubera_web/live/page_live/live_helpers.ex
+
+lib/kubera/cms/page.ex
+lib/kubera/cms.ex
+injecting.... lib/kubera_web.ex
+
+priv/repo/migrations/202213131231_create_pages.exs
+
+test/kubera_web/live/page_live_test.exs
+test/kubera/cms_test.exs
+test/support/fixtures/cms_fixtures.ex
+
+
+
+
+
+
+mix ecto.migrate.
+
+
+kubera_web -> controllers -> page_controller.ex -> defines the index.html that is rendered in view
+
+views -> page_view.ex -> internally calls template for page (templates -> page -> index.html.heex)
+            ===> index.html.heex should be the name. If name changes, there is a various 
+
+templates -> page -> index.html.heex 
+            ===> localhost:4000 landing page contents
+
+router.ex
+    - Add routes for the new Live Views
+
+    live "/pages", PageLive.Index, :index 
+            ===> Dashboard Page to list the data
+    live "/pages/new", PageLive.Index, :new
+            ===> New Page button handler
+    live "/pages/:id/edit", PageLive.Index, :edit
+            ===> Edit for each record in Dashboard
+
+    live "/pages/:id", PageLive.Show, :show
+            ===> Show one record at a time and in its own page
+
+    live "/pages/:id/show/edit", PageLive.Show, :edit
+            ===> Edit current record in show page 
+
+Page_Live
+    lib --> kubera --> cms --> cms.ex = Model (Retrieves data from Repo)
+    lib --> kubera_web --> live --> page_live --> index.ex (Dashboard page for Pages)
+
+        @impl true
+        def mount(_params, _session, socket) do
+            {:ok, assign(socket, :pages, list_pages())}
+        end
+
+        Return the data from "list_pages()" function to socket with ":pages" as the atom to reference it?
+
