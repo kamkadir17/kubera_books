@@ -1,0 +1,67 @@
+<h1>Listing Users</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.user_index_path(@socket, :index)}>
+    <.live_component
+      module={KuberaWeb.UserLive.FormComponent}
+      id={@user.id || :new}
+      title={@page_title}
+      action={@live_action}
+      user={@user}
+      return_to={Routes.user_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Password</th>
+      <th>Role</th>
+      <th>Remember Token</th>
+      <th>Facebook Id</th>
+      <th>Google Id</th>
+      <th>Github Id</th>
+      <th>Contact Name</th>
+      <th>Company Name</th>
+      <th>Website</th>
+      <th>Enable Portal</th>
+      <th>Currency Id</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="users">
+    <%= for user <- @users do %>
+      <tr id={"user-#{user.id}"}>
+
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.password %></td>
+        <td><%= user.role %></td>
+        <td><%= user.remember_token %></td>
+        <td><%= user.facebook_id %></td>
+        <td><%= user.google_id %></td>
+        <td><%= user.github_id %></td>
+        <td><%= user.contact_name %></td>
+        <td><%= user.company_name %></td>
+        <td><%= user.website %></td>
+        <td><%= user.enable_portal %></td>
+        <td><%= user.currency_id %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.user_show_path(@socket, :show, user) %></span>
+          <span><%= live_patch "Edit", to: Routes.user_index_path(@socket, :edit, user) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: user.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New User", to: Routes.user_index_path(@socket, :new) %></span>

@@ -1,3 +1,6 @@
+Life is a endless possibility of miracles:
+
+
 mix phx.gen.live CMS Page pages title body:text
 schema
 migration file 
