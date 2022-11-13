@@ -1,6 +1,5 @@
 <h1>Listing Pages</h1>
-
-
+<h1><%= @page_title %></h1>
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.page_index_path(@socket, :index)}>

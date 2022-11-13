@@ -16,6 +16,6 @@ defmodule KuberaWeb.UserLive.Show do
      |> assign(:user, PROFILES.get_user!(id))}
   end
 
-  defp page_title(:show), do: "Show User"
-  defp page_title(:edit), do: "Edit User"
+  defp page_title(:show), do: "Show User Details"
+  defp page_title(:edit), do: "Edit User Details"
 end
